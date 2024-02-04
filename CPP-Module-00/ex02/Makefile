@@ -1,0 +1,78 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                                              #
+#    Makefile                                                                  #
+#                                                                              #
+#    By: Mr. Norkum <mrnorkum@gmail.com>                                       #
+#                                                                              #
+#    Created: 2024/01/16 08:26:02 by Mr. Norkum                                #
+#    Updated: 2024/01/16 08:26:06 by Mr. Norkum                                #
+#                                                                              #
+# **************************************************************************** #
+
+NAME		=	test
+
+SRC			=	Account.cpp	\
+				tests.cpp
+
+SRCDIR		= ./
+
+OBJ			= $(addprefix $(OBJDIR)/, $(notdir $(patsubst %.cpp, %.o, $(SRC))))
+
+OBJDIR		= ./OBJECT
+
+CC			= c++
+
+CFLAGS		= -std=c++98 -g -Wall -Wextra -Werror
+
+RM			= rm -rf
+
+ECHO		= echo
+
+all: $(NAME)
+
+$(NAME): $(OBJ)
+	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME)
+	@$(ECHO) "\033[0;32m> Ex02 Compiled\033[0m"
+
+$(OBJDIR) :
+	@test -d $(OBJDIR) || mkdir $(OBJDIR)
+
+$(OBJDIR)/%.o: $(SRCDIR)/%.cpp | $(OBJDIR)
+	@$(CC) $(CFLAGS) -c -o $@ $< \
+	&& $(ECHO) "\033[1;30m[C++] : Compiled $(notdir $<) \
+	[\033[0;32mOk\033[1;30m]\033[0m" \
+	|| $(ECHO) "\033[1;30m[C++] : Compiled $(notdir $<) \
+	[\033[0;7;31mError\033[0;1;30m]\033[0m"
+
+c: clean
+clean:
+	@$(RM) $(OBJDIR)
+	@$(ECHO) "\033[0;34m> Ex02 Directory cleaned\033[0m"
+
+f: fclean
+fclean: clean
+	@$(RM) $(NAME)
+	@$(ECHO) "\033[0;35m> Ex02 Binary removed\033[0m"
+
+r: re
+re: fclean all
+
+run: all
+	@./$(NAME)
+
+v: valgrind
+valgrind: all
+	@valgrind --leak-check=full --track-origins=yes ./$(NAME)
+
+.PHONY : all clean fclean re f c r
+
+# **************************************************************************** #
+#                                                                              #
+#   Mr. Norkum                                                                 #
+#                                                                              #
+#   Instagram: @mrnorkum                                                       #
+#   Telegram: @mrnorkum                                                        #
+#   Discord: @mrnorkum                                                         #
+#                                                     mail: mrnorkum@gmail.com #
+# **************************************************************************** #
