@@ -153,7 +153,13 @@ int	Span::shortestSpan(void)
 		throw SmallSizeException();
 	vector<int> copy(getArray());
 	bubbleSort(copy);
-	return (copy[1] - copy[0]);
+	int diff = copy[1] - copy[0];
+	for (size_t i = 0; i < copy.size(); i++)
+	{
+		if (copy[i + 1] - copy[i] < diff)
+			diff = copy[i + 1] - copy[i];
+	}
+	return (diff);
 }
 
 int	Span::longestSpan(void)
