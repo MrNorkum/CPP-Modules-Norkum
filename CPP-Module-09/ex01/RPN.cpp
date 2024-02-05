@@ -77,6 +77,8 @@ void	RPN_calculator(string arg)
 	{
 		if (token == "+" || token == "-" || token == "*" || token == "/")
 		{
+			if (numbers.size() < 2)
+				throw std::invalid_argument("Error");
 			int n1 = numbers.top();
 			numbers.pop();
 			int n2 = numbers.top();
