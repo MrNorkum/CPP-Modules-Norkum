@@ -65,19 +65,19 @@ Point&	Point::operator=(const Point& other)
 /* ************************************************************************** */
 /*                             Setters and Getters                            */
 /*                                                                            */
-/*   ->Fixed&    Point::getX(void) const;                                     */
-/*   ->Fixed&    Point::getY(void) const;                                     */
+/*   ->const Fixed&    Point::getX(void) const;                               */
+/*   ->const Fixed&    Point::getY(void) const;                               */
 /*                                                                            */
 /* ************************************************************************** */
 
-Fixed&	Point::getX(void) const
+const Fixed&	Point::getX(void) const
 {
-	return (const_cast<Fixed&>(this->_x));
+	return (this->_x);
 }
 
-Fixed&	Point::getY(void) const
+const Fixed&	Point::getY(void) const
 {
-	return (const_cast<Fixed&>(this->_y));
+	return (this->_y);
 }
 
 /* ************************************************************************** */

@@ -26,15 +26,15 @@
 /* ************************************************************************** */
 /*                           Operator Overloading                             */
 /*                                                                            */
-/*   ->Fixed    operator+(const Fixed& other);                                */
-/*   ->Fixed    operator-(const Fixed& other);                                */
-/*   ->Fixed    operator*(const Fixed& other);                                */
-/*   ->Fixed    operator/(const Fixed& other);                                */
-/*   ->Fixed&   operator+=(const Fixed& other);                               */
-/*   ->Fixed&   operator-=(const Fixed& other);                               */
-/*   ->Fixed&   operator*=(const Fixed& other);                               */
-/*   ->Fixed&   operator/=(const Fixed& other);                               */
-/*   ->Fixed&   operator++(void);                                             */
+/*   ->Fixed    operator+(const Fixed& other) const;                          */
+/*   ->Fixed    operator-(const Fixed& other) const;                          */
+/*   ->Fixed    operator*(const Fixed& other) const;                          */
+/*   ->Fixed    operator/(const Fixed& other) const;                          */
+/*   ->void     operator+=(const Fixed& other);                               */
+/*   ->void     operator-=(const Fixed& other);                               */
+/*   ->void     operator*=(const Fixed& other);                               */
+/*   ->void     operator/=(const Fixed& other);                               */
+/*   ->void     operator++(void);                                             */
 /*   ->Fixed    operator++(int);                                              */
 /*   ->Fixed&   operator--(void);                                             */
 /*   ->Fixed    operator--(int);                                              */
@@ -86,56 +86,52 @@ Fixed&	Fixed::operator=(const Fixed& other)
 	return (*this);
 }
 
-Fixed	Fixed::operator+(const Fixed& other)
+Fixed	Fixed::operator+(const Fixed& other) const
 {
 	cout << "Plus operator called (Fixed)" << endl;
 	return (Fixed(this->toFloat() + other.toFloat()));
 }
 
-Fixed	Fixed::operator-(const Fixed& other)
+Fixed	Fixed::operator-(const Fixed& other) const
 {
 	cout << "Minus operator called (Fixed)" << endl;
 	return (Fixed(this->toFloat() - other.toFloat()));
 }
 
-Fixed	Fixed::operator*(const Fixed& other)
+Fixed	Fixed::operator*(const Fixed& other) const
 {
 	cout << "Multiply operator called (Fixed)" << endl;
 	return (Fixed(this->toFloat() * other.toFloat()));
 }
 
-Fixed	Fixed::operator/(const Fixed& other)
+Fixed	Fixed::operator/(const Fixed& other) const
 {
 	cout << "Divide operator called (Fixed)" << endl;
 	return (Fixed(this->toFloat() / other.toFloat()));
 }
 
-Fixed&	Fixed::operator+=(const Fixed& other)
+void	Fixed::operator+=(const Fixed& other)
 {
 	cout << "Plus equal operator called (Fixed)" << endl;
 	*this = *this + other;
-	return (*this);
 }
 
-Fixed&	Fixed::operator-=(const Fixed& other)
+void	Fixed::operator-=(const Fixed& other)
 {
 	cout << "Minus equal operator called (Fixed)" << endl;
 	*this = *this - other;
-	return (*this);
 }
 
-Fixed&	Fixed::operator*=(const Fixed& other)
+void	Fixed::operator*=(const Fixed& other)
 {
 	cout << "Multiply equal operator called (Fixed)" << endl;
 	*this = *this * other;
-	return (*this);
 }
 
-Fixed&	Fixed::operator/=(const Fixed& other)
+void	Fixed::operator/=(const Fixed& other)
 {
 	cout << "Divide equal operator called (Fixed)" << endl;
 	*this = *this / other;
-	return (*this);
 }
 
 Fixed&	Fixed::operator++(void)

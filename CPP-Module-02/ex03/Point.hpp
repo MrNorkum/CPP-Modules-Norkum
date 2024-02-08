@@ -34,8 +34,8 @@ public:
 	Point&	operator=(const Point& other);
 
 	//Setters and Getters
-	Fixed&	getX(void) const;
-	Fixed&	getY(void) const;
+	const Fixed&	getX(void) const;
+	const Fixed&	getY(void) const;
 };
 
 //Non Member Functions
